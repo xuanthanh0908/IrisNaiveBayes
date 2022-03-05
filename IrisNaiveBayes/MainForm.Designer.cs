@@ -30,15 +30,15 @@ namespace IrisNaiveBayes
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.btn_open_train = new System.Windows.Forms.Button();
-            this.CB_Predict = new System.Windows.Forms.ComboBox();
-            this.CB_alogrithm = new System.Windows.Forms.ComboBox();
-            this.btn_run_train = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_run_train = new System.Windows.Forms.Button();
+            this.CB_alogrithm = new System.Windows.Forms.ComboBox();
+            this.CB_Predict = new System.Windows.Forms.ComboBox();
+            this.btn_open_train = new System.Windows.Forms.Button();
+            this.DGV_training = new System.Windows.Forms.DataGridView();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.parameters_groupBox = new System.Windows.Forms.GroupBox();
             this.svmParameters_panel = new System.Windows.Forms.Panel();
             this.svmAlgorithm_comboBox = new System.Windows.Forms.ComboBox();
@@ -56,6 +56,7 @@ namespace IrisNaiveBayes
             this.btn_open_testing = new System.Windows.Forms.Button();
             this.btn_run_test = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ClassificationLog_richTxt = new System.Windows.Forms.RichTextBox();
             this.confusionMatrix_checkBox = new System.Windows.Forms.CheckBox();
             this.performance_groupBox = new System.Windows.Forms.GroupBox();
             this.trainingTime_label = new System.Windows.Forms.Label();
@@ -66,9 +67,11 @@ namespace IrisNaiveBayes
             this.trainingTimeValue_label = new System.Windows.Forms.Label();
             this.classifierErrorValue_label = new System.Windows.Forms.Label();
             this.testingTimeValue_label = new System.Windows.Forms.Label();
-            this.ClassificationLog_richTxt = new System.Windows.Forms.RichTextBox();
+            this.training_openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.testing_openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.reset_button = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_training)).BeginInit();
             this.parameters_groupBox.SuspendLayout();
             this.svmParameters_panel.SuspendLayout();
             this.bayesianParameters_panel.SuspendLayout();
@@ -87,7 +90,7 @@ namespace IrisNaiveBayes
             this.groupBox1.Controls.Add(this.CB_alogrithm);
             this.groupBox1.Controls.Add(this.CB_Predict);
             this.groupBox1.Controls.Add(this.btn_open_train);
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.DGV_training);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1074, 397);
@@ -95,51 +98,14 @@ namespace IrisNaiveBayes
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin tập train";
             // 
-            // dataGridView1
+            // label2
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 25);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(832, 366);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // btn_open_train
-            // 
-            this.btn_open_train.Location = new System.Drawing.Point(868, 46);
-            this.btn_open_train.Name = "btn_open_train";
-            this.btn_open_train.Size = new System.Drawing.Size(200, 67);
-            this.btn_open_train.TabIndex = 1;
-            this.btn_open_train.Text = "Mở file train";
-            this.btn_open_train.UseVisualStyleBackColor = true;
-            // 
-            // CB_Predict
-            // 
-            this.CB_Predict.BackColor = System.Drawing.SystemColors.Control;
-            this.CB_Predict.FormattingEnabled = true;
-            this.CB_Predict.Location = new System.Drawing.Point(868, 165);
-            this.CB_Predict.Name = "CB_Predict";
-            this.CB_Predict.Size = new System.Drawing.Size(200, 28);
-            this.CB_Predict.TabIndex = 2;
-            // 
-            // CB_alogrithm
-            // 
-            this.CB_alogrithm.BackColor = System.Drawing.SystemColors.Control;
-            this.CB_alogrithm.FormattingEnabled = true;
-            this.CB_alogrithm.Location = new System.Drawing.Point(868, 248);
-            this.CB_alogrithm.Name = "CB_alogrithm";
-            this.CB_alogrithm.Size = new System.Drawing.Size(200, 28);
-            this.CB_alogrithm.TabIndex = 3;
-            // 
-            // btn_run_train
-            // 
-            this.btn_run_train.Location = new System.Drawing.Point(868, 310);
-            this.btn_run_train.Name = "btn_run_train";
-            this.btn_run_train.Size = new System.Drawing.Size(200, 67);
-            this.btn_run_train.TabIndex = 4;
-            this.btn_run_train.Text = "Chạy file train";
-            this.btn_run_train.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(864, 209);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(124, 20);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Chọn thuật toán";
             // 
             // label1
             // 
@@ -150,14 +116,57 @@ namespace IrisNaiveBayes
             this.label1.TabIndex = 5;
             this.label1.Text = "Chọn thuộc tính dự đoán";
             // 
-            // label2
+            // btn_run_train
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(864, 209);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 20);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Chọn thuật toán";
+            this.btn_run_train.Enabled = false;
+            this.btn_run_train.Location = new System.Drawing.Point(868, 310);
+            this.btn_run_train.Name = "btn_run_train";
+            this.btn_run_train.Size = new System.Drawing.Size(200, 67);
+            this.btn_run_train.TabIndex = 4;
+            this.btn_run_train.Text = "Chạy file train";
+            this.btn_run_train.UseVisualStyleBackColor = true;
+            this.btn_run_train.Click += new System.EventHandler(this.btn_run_train_Click);
+            // 
+            // CB_alogrithm
+            // 
+            this.CB_alogrithm.BackColor = System.Drawing.SystemColors.Control;
+            this.CB_alogrithm.Enabled = false;
+            this.CB_alogrithm.FormattingEnabled = true;
+            this.CB_alogrithm.Location = new System.Drawing.Point(868, 248);
+            this.CB_alogrithm.Name = "CB_alogrithm";
+            this.CB_alogrithm.Size = new System.Drawing.Size(200, 28);
+            this.CB_alogrithm.TabIndex = 3;
+            // 
+            // CB_Predict
+            // 
+            this.CB_Predict.BackColor = System.Drawing.SystemColors.Control;
+            this.CB_Predict.Enabled = false;
+            this.CB_Predict.FormattingEnabled = true;
+            this.CB_Predict.Location = new System.Drawing.Point(868, 165);
+            this.CB_Predict.Name = "CB_Predict";
+            this.CB_Predict.Size = new System.Drawing.Size(200, 28);
+            this.CB_Predict.TabIndex = 2;
+            this.CB_Predict.SelectedIndexChanged += new System.EventHandler(this.CB_Predict_SelectedIndexChanged);
+            // 
+            // btn_open_train
+            // 
+            this.btn_open_train.Location = new System.Drawing.Point(868, 46);
+            this.btn_open_train.Name = "btn_open_train";
+            this.btn_open_train.Size = new System.Drawing.Size(200, 67);
+            this.btn_open_train.TabIndex = 1;
+            this.btn_open_train.Text = "Mở file train";
+            this.btn_open_train.UseVisualStyleBackColor = true;
+            this.btn_open_train.Click += new System.EventHandler(this.btn_open_train_Click);
+            // 
+            // DGV_training
+            // 
+            this.DGV_training.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_training.Location = new System.Drawing.Point(6, 25);
+            this.DGV_training.Name = "DGV_training";
+            this.DGV_training.RowHeadersWidth = 62;
+            this.DGV_training.RowTemplate.Height = 28;
+            this.DGV_training.Size = new System.Drawing.Size(832, 366);
+            this.DGV_training.TabIndex = 0;
             // 
             // parameters_groupBox
             // 
@@ -302,6 +311,7 @@ namespace IrisNaiveBayes
             // 
             // btn_open_testing
             // 
+            this.btn_open_testing.Enabled = false;
             this.btn_open_testing.Location = new System.Drawing.Point(868, 46);
             this.btn_open_testing.Name = "btn_open_testing";
             this.btn_open_testing.Size = new System.Drawing.Size(200, 67);
@@ -311,6 +321,7 @@ namespace IrisNaiveBayes
             // 
             // btn_run_test
             // 
+            this.btn_run_test.Enabled = false;
             this.btn_run_test.Location = new System.Drawing.Point(868, 191);
             this.btn_run_test.Name = "btn_run_test";
             this.btn_run_test.Size = new System.Drawing.Size(200, 67);
@@ -331,6 +342,15 @@ namespace IrisNaiveBayes
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin tập test";
             // 
+            // ClassificationLog_richTxt
+            // 
+            this.ClassificationLog_richTxt.BackColor = System.Drawing.SystemColors.Control;
+            this.ClassificationLog_richTxt.Location = new System.Drawing.Point(6, 25);
+            this.ClassificationLog_richTxt.Name = "ClassificationLog_richTxt";
+            this.ClassificationLog_richTxt.Size = new System.Drawing.Size(832, 366);
+            this.ClassificationLog_richTxt.TabIndex = 13;
+            this.ClassificationLog_richTxt.Text = "";
+            // 
             // confusionMatrix_checkBox
             // 
             this.confusionMatrix_checkBox.Location = new System.Drawing.Point(868, 141);
@@ -340,7 +360,6 @@ namespace IrisNaiveBayes
             this.confusionMatrix_checkBox.TabIndex = 12;
             this.confusionMatrix_checkBox.Text = "Hiện thị ma trận";
             this.confusionMatrix_checkBox.UseVisualStyleBackColor = true;
-            this.confusionMatrix_checkBox.CheckedChanged += new System.EventHandler(this.confusionMatrix_checkBox_CheckedChanged);
             // 
             // performance_groupBox
             // 
@@ -356,7 +375,7 @@ namespace IrisNaiveBayes
             this.performance_groupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.performance_groupBox.Name = "performance_groupBox";
             this.performance_groupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.performance_groupBox.Size = new System.Drawing.Size(261, 385);
+            this.performance_groupBox.Size = new System.Drawing.Size(261, 253);
             this.performance_groupBox.TabIndex = 26;
             this.performance_groupBox.TabStop = false;
             this.performance_groupBox.Text = "Performance";
@@ -434,30 +453,44 @@ namespace IrisNaiveBayes
             this.testingTimeValue_label.TabIndex = 19;
             this.testingTimeValue_label.Text = "-";
             // 
-            // ClassificationLog_richTxt
+            // training_openFileDialog
             // 
-            this.ClassificationLog_richTxt.BackColor = System.Drawing.SystemColors.Control;
-            this.ClassificationLog_richTxt.Location = new System.Drawing.Point(6, 25);
-            this.ClassificationLog_richTxt.Name = "ClassificationLog_richTxt";
-            this.ClassificationLog_richTxt.Size = new System.Drawing.Size(832, 366);
-            this.ClassificationLog_richTxt.TabIndex = 13;
-            this.ClassificationLog_richTxt.Text = "";
+            this.training_openFileDialog.DereferenceLinks = false;
+            this.training_openFileDialog.Filter = "Text files (*.txt)|*.txt";
+            this.training_openFileDialog.InitialDirectory = "E:\\FILE DEV\\AI\\IrisNaiveBayes";
             // 
-            // Form1
+            // testing_openFileDialog
+            // 
+            this.testing_openFileDialog.Filter = "Text files (*.txt)|*.txt";
+            this.testing_openFileDialog.InitialDirectory = "E:\\FILE DEV\\AI\\IrisNaiveBayes";
+            // 
+            // reset_button
+            // 
+            this.reset_button.Enabled = false;
+            this.reset_button.Location = new System.Drawing.Point(1131, 711);
+            this.reset_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.reset_button.Name = "reset_button";
+            this.reset_button.Size = new System.Drawing.Size(266, 75);
+            this.reset_button.TabIndex = 27;
+            this.reset_button.Text = "RESET";
+            this.reset_button.UseVisualStyleBackColor = true;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(1409, 844);
+            this.Controls.Add(this.reset_button);
             this.Controls.Add(this.performance_groupBox);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.parameters_groupBox);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_training)).EndInit();
             this.parameters_groupBox.ResumeLayout(false);
             this.svmParameters_panel.ResumeLayout(false);
             this.bayesianParameters_panel.ResumeLayout(false);
@@ -480,7 +513,7 @@ namespace IrisNaiveBayes
         private System.Windows.Forms.ComboBox CB_alogrithm;
         private System.Windows.Forms.ComboBox CB_Predict;
         private System.Windows.Forms.Button btn_open_train;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DGV_training;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.GroupBox parameters_groupBox;
@@ -511,6 +544,9 @@ namespace IrisNaiveBayes
         private System.Windows.Forms.Label classifierErrorValue_label;
         private System.Windows.Forms.Label testingTimeValue_label;
         private System.Windows.Forms.RichTextBox ClassificationLog_richTxt;
+        private System.Windows.Forms.OpenFileDialog training_openFileDialog;
+        private System.Windows.Forms.OpenFileDialog testing_openFileDialog;
+        private System.Windows.Forms.Button reset_button;
     }
 }
 
