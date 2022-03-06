@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IrisNaiveBayes.ClassificationData
 {
-    public abstract class AbstractCommon
+    abstract public class AbstractCommon
     {
         public AbstractCommon()
         {

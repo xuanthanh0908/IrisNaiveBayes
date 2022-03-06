@@ -136,6 +136,7 @@ namespace IrisNaiveBayes
             this.CB_alogrithm.Name = "CB_alogrithm";
             this.CB_alogrithm.Size = new System.Drawing.Size(200, 28);
             this.CB_alogrithm.TabIndex = 3;
+            this.CB_alogrithm.SelectedIndexChanged += new System.EventHandler(this.CB_alogrithm_SelectedIndexChanged);
             // 
             // CB_Predict
             // 
@@ -318,6 +319,7 @@ namespace IrisNaiveBayes
             this.btn_open_testing.TabIndex = 1;
             this.btn_open_testing.Text = "Mở file test";
             this.btn_open_testing.UseVisualStyleBackColor = true;
+            this.btn_open_testing.Click += new System.EventHandler(this.btn_open_testing_Click);
             // 
             // btn_run_test
             // 
@@ -328,6 +330,7 @@ namespace IrisNaiveBayes
             this.btn_run_test.TabIndex = 4;
             this.btn_run_test.Text = "Chạy file test";
             this.btn_run_test.UseVisualStyleBackColor = true;
+            this.btn_run_test.Click += new System.EventHandler(this.btn_run_test_Click);
             // 
             // groupBox2
             // 
@@ -347,6 +350,7 @@ namespace IrisNaiveBayes
             this.ClassificationLog_richTxt.BackColor = System.Drawing.SystemColors.Control;
             this.ClassificationLog_richTxt.Location = new System.Drawing.Point(6, 25);
             this.ClassificationLog_richTxt.Name = "ClassificationLog_richTxt";
+            this.ClassificationLog_richTxt.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.ClassificationLog_richTxt.Size = new System.Drawing.Size(832, 366);
             this.ClassificationLog_richTxt.TabIndex = 13;
             this.ClassificationLog_richTxt.Text = "";
@@ -474,6 +478,7 @@ namespace IrisNaiveBayes
             this.reset_button.TabIndex = 27;
             this.reset_button.Text = "RESET";
             this.reset_button.UseVisualStyleBackColor = true;
+            this.reset_button.Click += new System.EventHandler(this.reset_button_Click);
             // 
             // MainForm
             // 
@@ -487,7 +492,7 @@ namespace IrisNaiveBayes
             this.Controls.Add(this.parameters_groupBox);
             this.Controls.Add(this.groupBox1);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "MainForm";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_training)).EndInit();

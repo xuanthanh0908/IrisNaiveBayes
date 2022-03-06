@@ -41,40 +41,11 @@ namespace IrisNaiveBayes.ClassificationData
         }
         public bool OpenFileTraining(string path, bool HasHeader)
         {
-            try
-            {
-                using (StreamReader file = new StreamReader(path))
-                {
-                    string Line = "";
-                    string[] ArrayLine = null;
-                    Line = file.ReadLine();
-                    ArrayLine = Line.Split(',');
-                    for (int i = 0; i < ArrayLine.Length; i++)
-                    {
-                        if (!HasHeader)
-                            AllColumnNames.Add("Attr_" + (i + 1).ToString());
-                        else
-                            AllColumnNames.Add(ArrayLine[i]);
-                        ExtractedDataset.Columns.Add(AllColumnNames[i], typeof(string));
-                    }
-                    if (!HasHeader)
-                        ExtractedDataset.Rows.Add(ArrayLine);
-                    while ((Line = file.ReadLine()) != null)
-                    {
-                        ArrayLine = Line.Split(',');
-                        ExtractedDataset.Rows.Add(ArrayLine);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-
-                return false;
-            }
+            // Hương làm phần này
             return true;
         }
 
-
+        [Obsolete]
         public bool Processdata(string AttrPredict,Codification Codebook = null)
         {
             ProcessedDataset = ExtractedDataset.Clone();
@@ -107,7 +78,11 @@ namespace IrisNaiveBayes.ClassificationData
                     {
                         if (column.ColumnName != AttrPredict)
                         {
-                            Double.TryParse(ExtractedDataset.Rows[i][column.Ordinal] as string, out tempValue);
+                            Double.TryParse(
+                                ExtractedDataset.Rows[i][column.Ordinal] as string, 
+                                System.Globalization.NumberStyles.Any,
+                                System.Globalization.CultureInfo.InvariantCulture, 
+                                out tempValue);
                             processedRow[column.Ordinal] = tempValue;
                             tempInput.Add(tempValue);
                         }
@@ -119,7 +94,7 @@ namespace IrisNaiveBayes.ClassificationData
                     ProcessedDataset.Rows.Add(processedRow);
                     InputData[i] = tempInput.ToArray();
                 }
-                if (CodeBook != null)
+                if (Codebook != null)
                     this.CodeBook = Codebook;
                 else
                     CodeBook = new Codification(ExtractedDataset, AttrPredict);

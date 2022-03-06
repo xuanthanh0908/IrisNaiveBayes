@@ -1,32 +1,25 @@
 ﻿using Accord.MachineLearning.Bayes;
+using Accord.Math;
 using Accord.Statistics.Distributions.Fitting;
 using Accord.Statistics.Distributions.Univariate;
-using IrisNaiveBayes.ClassificationData;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using IrisNaiveBayes.ClassificationData;
+
 
 namespace IrisNaiveBayes.Alogrithm
 {
     public class NaivebayesClass : AbstractCommon
     {
         public NaiveBayes<NormalDistribution> BayesianModel { get; private set; }
-        
+        public NaivebayesClass()
+        {
+
+        }
+
         public override double TrainClassifier(ProcessData trainingData)
         {
-            double classifierErr = 0;
-            BayesianModel = new NaiveBayes<NormalDistribution>(
-                trainingData.OutputPossibleValues,
-                trainingData.InputAttributeNumber,
-                NormalDistribution.Standard);
-            classifierErr = BayesianModel.Estimate(
-                trainingData.InputData,
-                trainingData.OutputData,
-                true,
-                new NormalOptions { Regularization = 1e-5 });
-            return classifierErr;
+            // Vân làm phần này
+            return 0;
         }
 
         public override int[] TestClassifier(ProcessData testingData)
