@@ -41,13 +41,43 @@ namespace IrisNaiveBayes.ClassificationData
         }
         public bool OpenFileTraining(string path, bool HasHeader)
         {
-            // Hương làm phần này
+            try
+            {
+                using (StreamReader file = new StreamReader(path)) // doc file txt
+                {
+                    string Line = "";
+                    string[] ArrayLine = null;
+                    Line = file.ReadLine(); // doc dong dau tien
+                    ArrayLine = Line.Split(',');
+                    for (int i = 0; i < ArrayLine.Length; i++)
+                    {
+                        if (!HasHeader)
+                            AllColumnNames.Add("Attr_" + (i + 1).ToString());
+                        else
+                            AllColumnNames.Add(ArrayLine[i]);
+                        ExtractedDataset.Columns.Add(AllColumnNames[i], typeof(string));
+                    }
+                    if (!HasHeader)
+                        ExtractedDataset.Rows.Add(ArrayLine);
+                    while ((Line = file.ReadLine()) != null)
+                    {
+                        ArrayLine = Line.Split(',');
+                        ExtractedDataset.Rows.Add(ArrayLine);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
             return true;
         }
 
         [Obsolete]
         public bool Processdata(string AttrPredict,Codification Codebook = null)
         {
+
             ProcessedDataset = ExtractedDataset.Clone();
 
             InputData = new double[ExtractedDataset.Rows.Count][];

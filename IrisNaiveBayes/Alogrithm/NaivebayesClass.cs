@@ -18,8 +18,22 @@ namespace IrisNaiveBayes.Alogrithm
 
         public override double TrainClassifier(ProcessData trainingData)
         {
-            // Vân làm phần này
-            return 0;
+            double classifierError = 0;
+
+            // Create a new Naive Bayes classifier.
+            BayesianModel = new NaiveBayes<NormalDistribution>(
+               trainingData.OutputPossibleValues,
+               trainingData.InputAttributeNumber,
+               NormalDistribution.Standard);
+
+            // Compute the Naive Bayes model.
+            classifierError = BayesianModel.Estimate(
+                trainingData.InputData,
+                trainingData.OutputData,
+                true,
+                new NormalOptions { Regularization = 1e-5 /* To avoid zero variances. */ });
+
+            return classifierError;
         }
 
         public override int[] TestClassifier(ProcessData testingData)

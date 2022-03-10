@@ -116,7 +116,61 @@ namespace IrisNaiveBayes
         [Obsolete]
         private void btn_run_train_Click(object sender, EventArgs e)
         {
-            // Vân làm phần này
+            ClassificationLog_richTxt.SelectionStart = ClassificationLog_richTxt.Text.Length;
+            ClassificationLog_richTxt.ScrollToCaret();
+            if (!trainingData.Processdata(CB_Predict.SelectedItem.ToString()))
+            {
+                ClassificationLog_richTxt.SelectionColor = Color.Red;
+                ClassificationLog_richTxt.SelectedText =
+                    "=====> Có lỗi xảy ra trong quá trình training dữ liệu !!" +
+                    Environment.NewLine;
+                return;
+            }
+            ClassificationLog_richTxt.SelectionColor = Color.Green;
+            ClassificationLog_richTxt.SelectedText =
+                "=====> Training dữ liệu thành công !!" +
+                Environment.NewLine;
+            switch (CB_alogrithm.SelectedItem.ToString())
+            {
+                case "Naive Bayesian":
+                    classifier = new NaivebayesClass();
+                    break;
+                default:
+                    // Return if no valid classifier is selected.
+                    return;
+            }
+            chronometer.Reset();
+            chronometer.Start();
+            try
+            {
+                if (classifier is NaivebayesClass)
+                    classifierError = classifier.TrainClassifier(trainingData);
+            }
+            catch
+            {
+                ClassificationLog_richTxt.SelectionColor = Color.Red;
+                ClassificationLog_richTxt.SelectedText =
+                    "=====> Có lỗi xảy ra trong quá trình sử dụng NaiveBayes training !!" +
+                    Environment.NewLine;
+                return;
+            }
+            chronometer.Stop();
+            ClassificationLog_richTxt.SelectionColor = Color.Green;
+            ClassificationLog_richTxt.SelectedText =
+                "=====> Phân lớp dữ liệu traning thành công !!" +
+                Environment.NewLine;
+            // show performance
+            trainingTimeValue_label.ForeColor = Color.Blue;
+            trainingTimeValue_label.Text = chronometer.ElapsedMilliseconds + " ms";
+            classifierErrorValue_label.ForeColor = (classifierError == 0) ? Color.Green : Color.Red;
+            classifierErrorValue_label.Text =
+                string.Format("{0:0.00}", classifierError * 100) + "%";
+            dataTrained = true;
+            CB_Predict.Enabled = false;
+            CB_alogrithm.Enabled = false;
+            btn_run_train.Enabled = false;
+            btn_open_testing.Enabled = trainingFileLoaded & dataTrained;
+            btn_run_test.Enabled = trainingFileLoaded && testingFileLoaded && dataTrained;
         }
 
         private void CB_alogrithm_SelectedIndexChanged(object sender, EventArgs e)
