@@ -19,21 +19,20 @@ namespace IrisNaiveBayes.Alogrithm
 
         public override double TrainClassifier(ProcessData trainingData) // xử lý sự kiện
         {
-            // Vân làm phần này
             double classifierError = 0;
 
             // Create a new Naive Bayes classifier.
             BayesianModel = new NaiveBayes<NormalDistribution>(
-               trainingData.OutputPossibleValues,//huấn luyện dl các gt đầu ra (tương tự Y và N ..class)
-               trainingData.InputAttributeNumber,//huyến luyện dl số thuộc tính đầu vào (dl phân tích 012..)
-               NormalDistribution.Standard);//phân phối bình thg theo tiêu chuẩn
+               trainingData.OutputPossibleValues,
+               trainingData.InputAttributeNumber,
+               NormalDistribution.Standard);
 
             // Compute the Naive Bayes model.
-            classifierError = BayesianModel.Estimate(// = ước tính mô hình bayes //classifierError: tg tu dữ liệu-> loại j
-                trainingData.InputData,//dl đầu vào // tương tự X trong ML
-                trainingData.OutputData,//dl đầu ra // tương tự y
+            classifierError = BayesianModel.Estimate(
+                trainingData.InputData,
+                trainingData.OutputData,
                 true,
-                new NormalOptions { Regularization = 1e-5 /* Để tránh không có phương sai. tránh kết quả = 0*/ });
+                new NormalOptions { Regularization = 1e-5 /* To avoid zero variances. */ });
 
             return classifierError;
         }

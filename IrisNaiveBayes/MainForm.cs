@@ -114,27 +114,21 @@ namespace IrisNaiveBayes
         [Obsolete]
         private void btn_run_train_Click(object sender, EventArgs e)
         {
-            // Vân làm phần này
-            // Scroll to the end of the text box.
-            classificationLog_richTextBox.SelectionStart = classificationLog_richTextBox.Text.Length;
-            classificationLog_richTextBox.ScrollToCaret();
-
-            // Return if there was an error when processing the training dataset.
-            if (!trainingData.ProcessDataset(attributeToPredict_comboBox.SelectedItem.ToString()))
+            ClassificationLog_richTxt.SelectionStart = ClassificationLog_richTxt.Text.Length;
+            ClassificationLog_richTxt.ScrollToCaret();
+            if (!trainingData.Processdata(CB_Predict.SelectedItem.ToString()))
             {
-                classificationLog_richTextBox.SelectionColor = Color.Red;
-                classificationLog_richTextBox.SelectedText =
-                    "=====> There was a problem with processing the training data." +
+                ClassificationLog_richTxt.SelectionColor = Color.Red;
+                ClassificationLog_richTxt.SelectedText =
+                    "=====> Có lỗi xảy ra trong quá trình training dữ liệu !!" +
                     Environment.NewLine;
                 return;
             }
-            classificationLog_richTextBox.SelectionColor = Color.Green;
-            classificationLog_richTextBox.SelectedText =
-                "=====> Training data was processed correctly." +
+            ClassificationLog_richTxt.SelectionColor = Color.Green;
+            ClassificationLog_richTxt.SelectedText =
+                "=====> Training dữ liệu thành công !!" +
                 Environment.NewLine;
-
-            // Choose classifier to use.
-            switch (classifierToUse_comboBox.SelectedItem.ToString())
+            switch (CB_alogrithm.SelectedItem.ToString())
             {
                 case "Naive Bayesian":
                     classifier = new NaivebayesClass();
@@ -143,36 +137,39 @@ namespace IrisNaiveBayes
                     // Return if no valid classifier is selected.
                     return;
             }
-
-            // Measure and display training time and error.
-            chronometer.Reset();//chạy từ 154-168 mất bao nhiêu s
+            chronometer.Reset();
             chronometer.Start();
             try
             {
                 if (classifier is NaivebayesClass)
-                    classifierError = ((NaivebayesClass)classifier).TrainClassifier(
-                        trainingData);// độ sai model kiểu 0.212...
-                /*svmAlgorithm_comboBox*/
+                    classifierError = classifier.TrainClassifier(trainingData);
             }
             catch
             {
-                classificationLog_richTextBox.SelectionColor = Color.Red;
-                classificationLog_richTextBox.SelectedText =
-                    "=====> There was a problem with training the classifier." +
+                ClassificationLog_richTxt.SelectionColor = Color.Red;
+                ClassificationLog_richTxt.SelectedText =
+                    "=====> Có lỗi xảy ra trong quá trình sử dụng NaiveBayes training !!" +
                     Environment.NewLine;
                 return;
             }
             chronometer.Stop();
-            classificationLog_richTextBox.SelectionColor = Color.Green;
-            classificationLog_richTextBox.SelectedText =
-                "=====> Classifier was trained successfully." + // huân luyện thành công để cb cho test
+            ClassificationLog_richTxt.SelectionColor = Color.Green;
+            ClassificationLog_richTxt.SelectedText =
+                "=====> Phân lớp dữ liệu traning thành công !!" +
                 Environment.NewLine;
+            // show performance
             trainingTimeValue_label.ForeColor = Color.Blue;
             trainingTimeValue_label.Text = chronometer.ElapsedMilliseconds + " ms";
             classifierErrorValue_label.ForeColor = (classifierError == 0) ? Color.Green : Color.Red;
             classifierErrorValue_label.Text =
                 string.Format("{0:0.00}", classifierError * 100) + "%";
             dataTrained = true;
+            CB_Predict.Enabled = false;
+            CB_alogrithm.Enabled = false;
+            btn_run_train.Enabled = false;
+            btn_open_testing.Enabled = trainingFileLoaded & dataTrained;
+            btn_run_test.Enabled = trainingFileLoaded && testingFileLoaded && dataTrained;
+        }
 
             // Deactivate some window's controls if
             // classifier's training was successful.
