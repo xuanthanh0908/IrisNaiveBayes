@@ -74,7 +74,14 @@
   <ItemGroup>
     <Compile Include="Alogrithm\NaivebayesClass.cs" />
     <Compile Include="ClassificationData\AbstractCommon.cs" />
+    <Compile Include="ClassificationData\ClassificationData.cs" />
     <Compile Include="ClassificationData\ProcessData.cs" />
+    <Compile Include="ConfusionMatrixView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfusionMatrixView.Designer.cs">
+      <DependentUpon>ConfusionMatrixView.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +90,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConfusionMatrixView.resx">
+      <DependentUpon>ConfusionMatrixView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

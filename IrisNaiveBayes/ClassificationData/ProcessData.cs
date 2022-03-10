@@ -46,8 +46,10 @@ namespace IrisNaiveBayes.ClassificationData
         }
 
         [Obsolete]
-        public bool Processdata(string AttrPredict,Codification Codebook = null)
+
+        public bool ProcessDataset(string AttrPredict, Codification Codebook = null)
         {
+
             ProcessedDataset = ExtractedDataset.Clone();
 
             InputData = new double[ExtractedDataset.Rows.Count][];
@@ -79,9 +81,9 @@ namespace IrisNaiveBayes.ClassificationData
                         if (column.ColumnName != AttrPredict)
                         {
                             Double.TryParse(
-                                ExtractedDataset.Rows[i][column.Ordinal] as string, 
+                                ExtractedDataset.Rows[i][column.Ordinal] as string,
                                 System.Globalization.NumberStyles.Any,
-                                System.Globalization.CultureInfo.InvariantCulture, 
+                                System.Globalization.CultureInfo.InvariantCulture,
                                 out tempValue);
                             processedRow[column.Ordinal] = tempValue;
                             tempInput.Add(tempValue);

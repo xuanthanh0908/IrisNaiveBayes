@@ -1,18 +1,14 @@
-﻿using Accord.Controls;
+﻿
+using Accord.Controls;
 using Accord.MachineLearning.VectorMachines.Learning;
 using Accord.Statistics.Kernels;
-using IrisNaiveBayes.Alogrithm;
-using IrisNaiveBayes.ClassificationData;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using IrisNaiveBayes.ClassificationData;
+using IrisNaiveBayes.Alogrithm;
 
 namespace IrisNaiveBayes
 {
@@ -82,6 +78,7 @@ namespace IrisNaiveBayes
                     " xảy ra lỗi !!" +
                     Environment.NewLine;
                 }
+
                 trainingFileLoaded = true;
                 ClassificationLog_richTxt.SelectionColor = Color.Green;
                 ClassificationLog_richTxt.SelectedText =
@@ -101,6 +98,7 @@ namespace IrisNaiveBayes
                 btn_run_train.Enabled = attributeChosen && classifierChosen;
                 btn_run_test.Enabled = trainingFileLoaded && testingFileLoaded && dataTrained;
                 reset_button.Enabled = true;
+                this.Refresh();
             }
         }
 
@@ -117,6 +115,78 @@ namespace IrisNaiveBayes
         private void btn_run_train_Click(object sender, EventArgs e)
         {
             // Vân làm phần này
+            // Scroll to the end of the text box.
+            classificationLog_richTextBox.SelectionStart = classificationLog_richTextBox.Text.Length;
+            classificationLog_richTextBox.ScrollToCaret();
+
+            // Return if there was an error when processing the training dataset.
+            if (!trainingData.ProcessDataset(attributeToPredict_comboBox.SelectedItem.ToString()))
+            {
+                classificationLog_richTextBox.SelectionColor = Color.Red;
+                classificationLog_richTextBox.SelectedText =
+                    "=====> There was a problem with processing the training data." +
+                    Environment.NewLine;
+                return;
+            }
+            classificationLog_richTextBox.SelectionColor = Color.Green;
+            classificationLog_richTextBox.SelectedText =
+                "=====> Training data was processed correctly." +
+                Environment.NewLine;
+
+            // Choose classifier to use.
+            switch (classifierToUse_comboBox.SelectedItem.ToString())
+            {
+                case "Naive Bayesian":
+                    classifier = new NaivebayesClass();
+                    break;
+                default:
+                    // Return if no valid classifier is selected.
+                    return;
+            }
+
+            // Measure and display training time and error.
+            chronometer.Reset();//chạy từ 154-168 mất bao nhiêu s
+            chronometer.Start();
+            try
+            {
+                if (classifier is NaivebayesClass)
+                    classifierError = ((NaivebayesClass)classifier).TrainClassifier(
+                        trainingData);// độ sai model kiểu 0.212...
+                /*svmAlgorithm_comboBox*/
+            }
+            catch
+            {
+                classificationLog_richTextBox.SelectionColor = Color.Red;
+                classificationLog_richTextBox.SelectedText =
+                    "=====> There was a problem with training the classifier." +
+                    Environment.NewLine;
+                return;
+            }
+            chronometer.Stop();
+            classificationLog_richTextBox.SelectionColor = Color.Green;
+            classificationLog_richTextBox.SelectedText =
+                "=====> Classifier was trained successfully." + // huân luyện thành công để cb cho test
+                Environment.NewLine;
+            trainingTimeValue_label.ForeColor = Color.Blue;
+            trainingTimeValue_label.Text = chronometer.ElapsedMilliseconds + " ms";
+            classifierErrorValue_label.ForeColor = (classifierError == 0) ? Color.Green : Color.Red;
+            classifierErrorValue_label.Text =
+                string.Format("{0:0.00}", classifierError * 100) + "%";
+            dataTrained = true;
+
+            // Deactivate some window's controls if
+            // classifier's training was successful.
+            attributeToPredict_comboBox.Enabled = false;
+            classifierToUse_comboBox.Enabled = false;
+            treeJoin_numericUpDown.Enabled = false;
+            treeHeight_numericUpDown.Enabled = false;
+            svmKernel_comboBox.Enabled = false;
+            svmAlgorithm_comboBox.Enabled = false;
+            decisionTree_checkBox.Enabled = false;
+            this.Refresh();
+
+            // Show a visual tree if decision tree classifier
+            // was chosen and the user checked the check box.
         }
 
         private void CB_alogrithm_SelectedIndexChanged(object sender, EventArgs e)
@@ -242,7 +312,7 @@ namespace IrisNaiveBayes
             ClassificationLog_richTxt.SelectionStart = ClassificationLog_richTxt.Text.Length;
             ClassificationLog_richTxt.ScrollToCaret();
 
-            if (!testingData.Processdata(trainingData.OutputColumnName, trainingData.CodeBook))
+            if (!testingData.ProcessDataset(trainingData.OutputColumnName, trainingData.CodeBook))
             {
                 ClassificationLog_richTxt.SelectionColor = Color.Red;
                 ClassificationLog_richTxt.SelectedText =
@@ -295,8 +365,20 @@ namespace IrisNaiveBayes
                         Environment.NewLine;
                 }
             }
+
             ClassificationLog_richTxt.SelectionStart = ClassificationLog_richTxt.Text.Length;
             ClassificationLog_richTxt.ScrollToCaret();
+
+            // Đóng cửa sổ cũ hiển thị ma trận nhầm lẫn
+            // (nếu có) và hiển thị một cửa sổ mới khi người dùng
+            // đã đánh dấu vào hộp kiểm.
+            if (matrixVisualizer != null)
+                matrixVisualizer.Close();
+            if (confusionMatrix_checkBox.Checked)
+            {
+                matrixVisualizer = new ConfusionMatrixView(testingData, predictedValues);
+                matrixVisualizer.Show();
+            }
 
             testingTimeValue_label.ForeColor = Color.Blue;
             testingTimeValue_label.Text = chronometer.ElapsedMilliseconds + " ms";

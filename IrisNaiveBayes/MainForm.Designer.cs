@@ -91,9 +91,11 @@ namespace IrisNaiveBayes
             this.groupBox1.Controls.Add(this.CB_Predict);
             this.groupBox1.Controls.Add(this.btn_open_train);
             this.groupBox1.Controls.Add(this.DGV_training);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(8, 8);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1074, 397);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(716, 258);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin tập train";
@@ -101,27 +103,30 @@ namespace IrisNaiveBayes
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(864, 209);
+            this.label2.Location = new System.Drawing.Point(576, 136);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 20);
+            this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Chọn thuật toán";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(864, 128);
+            this.label1.Location = new System.Drawing.Point(576, 83);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 20);
+            this.label1.Size = new System.Drawing.Size(127, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Chọn thuộc tính dự đoán";
             // 
             // btn_run_train
             // 
             this.btn_run_train.Enabled = false;
-            this.btn_run_train.Location = new System.Drawing.Point(868, 310);
+            this.btn_run_train.Location = new System.Drawing.Point(579, 201);
+            this.btn_run_train.Margin = new System.Windows.Forms.Padding(2);
             this.btn_run_train.Name = "btn_run_train";
-            this.btn_run_train.Size = new System.Drawing.Size(200, 67);
+            this.btn_run_train.Size = new System.Drawing.Size(133, 44);
             this.btn_run_train.TabIndex = 4;
             this.btn_run_train.Text = "Chạy file train";
             this.btn_run_train.UseVisualStyleBackColor = true;
@@ -132,9 +137,10 @@ namespace IrisNaiveBayes
             this.CB_alogrithm.BackColor = System.Drawing.SystemColors.Control;
             this.CB_alogrithm.Enabled = false;
             this.CB_alogrithm.FormattingEnabled = true;
-            this.CB_alogrithm.Location = new System.Drawing.Point(868, 248);
+            this.CB_alogrithm.Location = new System.Drawing.Point(579, 161);
+            this.CB_alogrithm.Margin = new System.Windows.Forms.Padding(2);
             this.CB_alogrithm.Name = "CB_alogrithm";
-            this.CB_alogrithm.Size = new System.Drawing.Size(200, 28);
+            this.CB_alogrithm.Size = new System.Drawing.Size(135, 21);
             this.CB_alogrithm.TabIndex = 3;
             this.CB_alogrithm.SelectedIndexChanged += new System.EventHandler(this.CB_alogrithm_SelectedIndexChanged);
             // 
@@ -143,17 +149,19 @@ namespace IrisNaiveBayes
             this.CB_Predict.BackColor = System.Drawing.SystemColors.Control;
             this.CB_Predict.Enabled = false;
             this.CB_Predict.FormattingEnabled = true;
-            this.CB_Predict.Location = new System.Drawing.Point(868, 165);
+            this.CB_Predict.Location = new System.Drawing.Point(579, 107);
+            this.CB_Predict.Margin = new System.Windows.Forms.Padding(2);
             this.CB_Predict.Name = "CB_Predict";
-            this.CB_Predict.Size = new System.Drawing.Size(200, 28);
+            this.CB_Predict.Size = new System.Drawing.Size(135, 21);
             this.CB_Predict.TabIndex = 2;
             this.CB_Predict.SelectedIndexChanged += new System.EventHandler(this.CB_Predict_SelectedIndexChanged);
             // 
             // btn_open_train
             // 
-            this.btn_open_train.Location = new System.Drawing.Point(868, 46);
+            this.btn_open_train.Location = new System.Drawing.Point(579, 30);
+            this.btn_open_train.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open_train.Name = "btn_open_train";
-            this.btn_open_train.Size = new System.Drawing.Size(200, 67);
+            this.btn_open_train.Size = new System.Drawing.Size(133, 44);
             this.btn_open_train.TabIndex = 1;
             this.btn_open_train.Text = "Mở file train";
             this.btn_open_train.UseVisualStyleBackColor = true;
@@ -162,11 +170,12 @@ namespace IrisNaiveBayes
             // DGV_training
             // 
             this.DGV_training.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_training.Location = new System.Drawing.Point(6, 25);
+            this.DGV_training.Location = new System.Drawing.Point(4, 16);
+            this.DGV_training.Margin = new System.Windows.Forms.Padding(2);
             this.DGV_training.Name = "DGV_training";
             this.DGV_training.RowHeadersWidth = 62;
             this.DGV_training.RowTemplate.Height = 28;
-            this.DGV_training.Size = new System.Drawing.Size(832, 366);
+            this.DGV_training.Size = new System.Drawing.Size(555, 238);
             this.DGV_training.TabIndex = 0;
             // 
             // parameters_groupBox
@@ -175,11 +184,11 @@ namespace IrisNaiveBayes
             this.parameters_groupBox.Controls.Add(this.bayesianParameters_panel);
             this.parameters_groupBox.Controls.Add(this.treeParameters_panel);
             this.parameters_groupBox.Enabled = false;
-            this.parameters_groupBox.Location = new System.Drawing.Point(1131, 22);
-            this.parameters_groupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.parameters_groupBox.Location = new System.Drawing.Point(754, 14);
+            this.parameters_groupBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.parameters_groupBox.Name = "parameters_groupBox";
-            this.parameters_groupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.parameters_groupBox.Size = new System.Drawing.Size(266, 381);
+            this.parameters_groupBox.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.parameters_groupBox.Size = new System.Drawing.Size(177, 248);
             this.parameters_groupBox.TabIndex = 24;
             this.parameters_groupBox.TabStop = false;
             this.parameters_groupBox.Text = "Tham số";
@@ -190,10 +199,10 @@ namespace IrisNaiveBayes
             this.svmParameters_panel.Controls.Add(this.svmKernel_comboBox);
             this.svmParameters_panel.Controls.Add(this.svmAlgorithm_label);
             this.svmParameters_panel.Controls.Add(this.svmKernel_label);
-            this.svmParameters_panel.Location = new System.Drawing.Point(7, 35);
-            this.svmParameters_panel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.svmParameters_panel.Location = new System.Drawing.Point(5, 23);
+            this.svmParameters_panel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.svmParameters_panel.Name = "svmParameters_panel";
-            this.svmParameters_panel.Size = new System.Drawing.Size(255, 338);
+            this.svmParameters_panel.Size = new System.Drawing.Size(170, 220);
             this.svmParameters_panel.TabIndex = 2;
             this.svmParameters_panel.Visible = false;
             // 
@@ -201,53 +210,56 @@ namespace IrisNaiveBayes
             // 
             this.svmAlgorithm_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.svmAlgorithm_comboBox.FormattingEnabled = true;
-            this.svmAlgorithm_comboBox.Location = new System.Drawing.Point(7, 102);
-            this.svmAlgorithm_comboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.svmAlgorithm_comboBox.Location = new System.Drawing.Point(5, 66);
+            this.svmAlgorithm_comboBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.svmAlgorithm_comboBox.Name = "svmAlgorithm_comboBox";
-            this.svmAlgorithm_comboBox.Size = new System.Drawing.Size(237, 28);
+            this.svmAlgorithm_comboBox.Size = new System.Drawing.Size(159, 21);
             this.svmAlgorithm_comboBox.TabIndex = 13;
             // 
             // svmKernel_comboBox
             // 
             this.svmKernel_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.svmKernel_comboBox.FormattingEnabled = true;
-            this.svmKernel_comboBox.Location = new System.Drawing.Point(7, 29);
-            this.svmKernel_comboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.svmKernel_comboBox.Location = new System.Drawing.Point(5, 19);
+            this.svmKernel_comboBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.svmKernel_comboBox.Name = "svmKernel_comboBox";
-            this.svmKernel_comboBox.Size = new System.Drawing.Size(237, 28);
+            this.svmKernel_comboBox.Size = new System.Drawing.Size(159, 21);
             this.svmKernel_comboBox.TabIndex = 9;
             // 
             // svmAlgorithm_label
             // 
-            this.svmAlgorithm_label.Location = new System.Drawing.Point(3, 74);
+            this.svmAlgorithm_label.Location = new System.Drawing.Point(2, 48);
+            this.svmAlgorithm_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.svmAlgorithm_label.Name = "svmAlgorithm_label";
-            this.svmAlgorithm_label.Size = new System.Drawing.Size(241, 25);
+            this.svmAlgorithm_label.Size = new System.Drawing.Size(161, 16);
             this.svmAlgorithm_label.TabIndex = 12;
             this.svmAlgorithm_label.Text = "Thuật toán";
             // 
             // svmKernel_label
             // 
             this.svmKernel_label.Location = new System.Drawing.Point(0, 1);
+            this.svmKernel_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.svmKernel_label.Name = "svmKernel_label";
-            this.svmKernel_label.Size = new System.Drawing.Size(244, 24);
+            this.svmKernel_label.Size = new System.Drawing.Size(163, 16);
             this.svmKernel_label.TabIndex = 11;
             this.svmKernel_label.Text = "Kernel :";
             // 
             // bayesianParameters_panel
             // 
             this.bayesianParameters_panel.Controls.Add(this.bayesian_label);
-            this.bayesianParameters_panel.Location = new System.Drawing.Point(7, 35);
-            this.bayesianParameters_panel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bayesianParameters_panel.Location = new System.Drawing.Point(5, 23);
+            this.bayesianParameters_panel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.bayesianParameters_panel.Name = "bayesianParameters_panel";
-            this.bayesianParameters_panel.Size = new System.Drawing.Size(258, 338);
+            this.bayesianParameters_panel.Size = new System.Drawing.Size(172, 220);
             this.bayesianParameters_panel.TabIndex = 1;
             this.bayesianParameters_panel.Visible = false;
             // 
             // bayesian_label
             // 
-            this.bayesian_label.Location = new System.Drawing.Point(3, 139);
+            this.bayesian_label.Location = new System.Drawing.Point(2, 90);
+            this.bayesian_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.bayesian_label.Name = "bayesian_label";
-            this.bayesian_label.Size = new System.Drawing.Size(241, 25);
+            this.bayesian_label.Size = new System.Drawing.Size(161, 16);
             this.bayesian_label.TabIndex = 11;
             this.bayesian_label.Text = "No parameters to show.";
             this.bayesian_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -259,63 +271,66 @@ namespace IrisNaiveBayes
             this.treeParameters_panel.Controls.Add(this.treeJoin_numericUpDown);
             this.treeParameters_panel.Controls.Add(this.treeHeight_label);
             this.treeParameters_panel.Controls.Add(this.treeJoin_label);
-            this.treeParameters_panel.Location = new System.Drawing.Point(7, 35);
-            this.treeParameters_panel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.treeParameters_panel.Location = new System.Drawing.Point(5, 23);
+            this.treeParameters_panel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.treeParameters_panel.Name = "treeParameters_panel";
-            this.treeParameters_panel.Size = new System.Drawing.Size(258, 338);
+            this.treeParameters_panel.Size = new System.Drawing.Size(172, 220);
             this.treeParameters_panel.TabIndex = 0;
             this.treeParameters_panel.Visible = false;
             // 
             // decisionTree_checkBox
             // 
-            this.decisionTree_checkBox.Location = new System.Drawing.Point(7, 186);
-            this.decisionTree_checkBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.decisionTree_checkBox.Location = new System.Drawing.Point(5, 121);
+            this.decisionTree_checkBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.decisionTree_checkBox.Name = "decisionTree_checkBox";
-            this.decisionTree_checkBox.Size = new System.Drawing.Size(237, 25);
+            this.decisionTree_checkBox.Size = new System.Drawing.Size(158, 16);
             this.decisionTree_checkBox.TabIndex = 12;
             this.decisionTree_checkBox.Text = "Show decision tree";
             this.decisionTree_checkBox.UseVisualStyleBackColor = true;
             // 
             // treeHeight_numericUpDown
             // 
-            this.treeHeight_numericUpDown.Location = new System.Drawing.Point(7, 151);
-            this.treeHeight_numericUpDown.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.treeHeight_numericUpDown.Location = new System.Drawing.Point(5, 98);
+            this.treeHeight_numericUpDown.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.treeHeight_numericUpDown.Name = "treeHeight_numericUpDown";
-            this.treeHeight_numericUpDown.Size = new System.Drawing.Size(237, 26);
+            this.treeHeight_numericUpDown.Size = new System.Drawing.Size(158, 20);
             this.treeHeight_numericUpDown.TabIndex = 12;
             this.treeHeight_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // treeJoin_numericUpDown
             // 
-            this.treeJoin_numericUpDown.Location = new System.Drawing.Point(7, 69);
-            this.treeJoin_numericUpDown.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.treeJoin_numericUpDown.Location = new System.Drawing.Point(5, 45);
+            this.treeJoin_numericUpDown.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.treeJoin_numericUpDown.Name = "treeJoin_numericUpDown";
-            this.treeJoin_numericUpDown.Size = new System.Drawing.Size(237, 26);
+            this.treeJoin_numericUpDown.Size = new System.Drawing.Size(158, 20);
             this.treeJoin_numericUpDown.TabIndex = 11;
             this.treeJoin_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // treeHeight_label
             // 
-            this.treeHeight_label.Location = new System.Drawing.Point(3, 105);
+            this.treeHeight_label.Location = new System.Drawing.Point(2, 68);
+            this.treeHeight_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.treeHeight_label.Name = "treeHeight_label";
-            this.treeHeight_label.Size = new System.Drawing.Size(241, 42);
+            this.treeHeight_label.Size = new System.Drawing.Size(161, 27);
             this.treeHeight_label.TabIndex = 10;
             this.treeHeight_label.Text = "Maximum height of the tree (set 0 to use default):";
             // 
             // treeJoin_label
             // 
-            this.treeJoin_label.Location = new System.Drawing.Point(3, 0);
+            this.treeJoin_label.Location = new System.Drawing.Point(2, 0);
+            this.treeJoin_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.treeJoin_label.Name = "treeJoin_label";
-            this.treeJoin_label.Size = new System.Drawing.Size(241, 65);
+            this.treeJoin_label.Size = new System.Drawing.Size(161, 42);
             this.treeJoin_label.TabIndex = 9;
             this.treeJoin_label.Text = "How many times a variable can join the decision process (set 0 to use default):";
             // 
             // btn_open_testing
             // 
             this.btn_open_testing.Enabled = false;
-            this.btn_open_testing.Location = new System.Drawing.Point(868, 46);
+            this.btn_open_testing.Location = new System.Drawing.Point(579, 30);
+            this.btn_open_testing.Margin = new System.Windows.Forms.Padding(2);
             this.btn_open_testing.Name = "btn_open_testing";
-            this.btn_open_testing.Size = new System.Drawing.Size(200, 67);
+            this.btn_open_testing.Size = new System.Drawing.Size(133, 44);
             this.btn_open_testing.TabIndex = 1;
             this.btn_open_testing.Text = "Mở file test";
             this.btn_open_testing.UseVisualStyleBackColor = true;
@@ -324,9 +339,10 @@ namespace IrisNaiveBayes
             // btn_run_test
             // 
             this.btn_run_test.Enabled = false;
-            this.btn_run_test.Location = new System.Drawing.Point(868, 191);
+            this.btn_run_test.Location = new System.Drawing.Point(579, 124);
+            this.btn_run_test.Margin = new System.Windows.Forms.Padding(2);
             this.btn_run_test.Name = "btn_run_test";
-            this.btn_run_test.Size = new System.Drawing.Size(200, 67);
+            this.btn_run_test.Size = new System.Drawing.Size(133, 44);
             this.btn_run_test.TabIndex = 4;
             this.btn_run_test.Text = "Chạy file test";
             this.btn_run_test.UseVisualStyleBackColor = true;
@@ -338,9 +354,11 @@ namespace IrisNaiveBayes
             this.groupBox2.Controls.Add(this.confusionMatrix_checkBox);
             this.groupBox2.Controls.Add(this.btn_run_test);
             this.groupBox2.Controls.Add(this.btn_open_testing);
-            this.groupBox2.Location = new System.Drawing.Point(12, 426);
+            this.groupBox2.Location = new System.Drawing.Point(8, 277);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1074, 397);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Size = new System.Drawing.Size(716, 258);
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin tập test";
@@ -348,19 +366,20 @@ namespace IrisNaiveBayes
             // ClassificationLog_richTxt
             // 
             this.ClassificationLog_richTxt.BackColor = System.Drawing.SystemColors.Control;
-            this.ClassificationLog_richTxt.Location = new System.Drawing.Point(6, 25);
+            this.ClassificationLog_richTxt.Location = new System.Drawing.Point(4, 16);
+            this.ClassificationLog_richTxt.Margin = new System.Windows.Forms.Padding(2);
             this.ClassificationLog_richTxt.Name = "ClassificationLog_richTxt";
             this.ClassificationLog_richTxt.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.ClassificationLog_richTxt.Size = new System.Drawing.Size(832, 366);
+            this.ClassificationLog_richTxt.Size = new System.Drawing.Size(556, 239);
             this.ClassificationLog_richTxt.TabIndex = 13;
             this.ClassificationLog_richTxt.Text = "";
             // 
             // confusionMatrix_checkBox
             // 
-            this.confusionMatrix_checkBox.Location = new System.Drawing.Point(868, 141);
-            this.confusionMatrix_checkBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.confusionMatrix_checkBox.Location = new System.Drawing.Point(579, 92);
+            this.confusionMatrix_checkBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.confusionMatrix_checkBox.Name = "confusionMatrix_checkBox";
-            this.confusionMatrix_checkBox.Size = new System.Drawing.Size(200, 25);
+            this.confusionMatrix_checkBox.Size = new System.Drawing.Size(133, 16);
             this.confusionMatrix_checkBox.TabIndex = 12;
             this.confusionMatrix_checkBox.Text = "Hiện thị ma trận";
             this.confusionMatrix_checkBox.UseVisualStyleBackColor = true;
@@ -375,11 +394,11 @@ namespace IrisNaiveBayes
             this.performance_groupBox.Controls.Add(this.trainingTimeValue_label);
             this.performance_groupBox.Controls.Add(this.classifierErrorValue_label);
             this.performance_groupBox.Controls.Add(this.testingTimeValue_label);
-            this.performance_groupBox.Location = new System.Drawing.Point(1135, 438);
-            this.performance_groupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.performance_groupBox.Location = new System.Drawing.Point(757, 285);
+            this.performance_groupBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.performance_groupBox.Name = "performance_groupBox";
-            this.performance_groupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.performance_groupBox.Size = new System.Drawing.Size(261, 253);
+            this.performance_groupBox.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.performance_groupBox.Size = new System.Drawing.Size(174, 164);
             this.performance_groupBox.TabIndex = 26;
             this.performance_groupBox.TabStop = false;
             this.performance_groupBox.Text = "Performance";
@@ -387,45 +406,50 @@ namespace IrisNaiveBayes
             // trainingTime_label
             // 
             this.trainingTime_label.AutoSize = true;
-            this.trainingTime_label.Location = new System.Drawing.Point(15, 57);
+            this.trainingTime_label.Location = new System.Drawing.Point(10, 37);
+            this.trainingTime_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.trainingTime_label.Name = "trainingTime_label";
-            this.trainingTime_label.Size = new System.Drawing.Size(103, 20);
+            this.trainingTime_label.Size = new System.Drawing.Size(70, 13);
             this.trainingTime_label.TabIndex = 14;
             this.trainingTime_label.Text = "Training time:";
             // 
             // testingTime_label
             // 
             this.testingTime_label.AutoSize = true;
-            this.testingTime_label.Location = new System.Drawing.Point(15, 136);
+            this.testingTime_label.Location = new System.Drawing.Point(10, 88);
+            this.testingTime_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.testingTime_label.Name = "testingTime_label";
-            this.testingTime_label.Size = new System.Drawing.Size(99, 20);
+            this.testingTime_label.Size = new System.Drawing.Size(67, 13);
             this.testingTime_label.TabIndex = 15;
             this.testingTime_label.Text = "Testing time:";
             // 
             // classifierError_label
             // 
             this.classifierError_label.AutoSize = true;
-            this.classifierError_label.Location = new System.Drawing.Point(15, 97);
+            this.classifierError_label.Location = new System.Drawing.Point(10, 63);
+            this.classifierError_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classifierError_label.Name = "classifierError_label";
-            this.classifierError_label.Size = new System.Drawing.Size(114, 20);
+            this.classifierError_label.Size = new System.Drawing.Size(75, 13);
             this.classifierError_label.TabIndex = 16;
             this.classifierError_label.Text = "Classifier error:";
             // 
             // predictionErrorValue_label
             // 
             this.predictionErrorValue_label.AutoSize = true;
-            this.predictionErrorValue_label.Location = new System.Drawing.Point(146, 173);
+            this.predictionErrorValue_label.Location = new System.Drawing.Point(97, 112);
+            this.predictionErrorValue_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.predictionErrorValue_label.Name = "predictionErrorValue_label";
-            this.predictionErrorValue_label.Size = new System.Drawing.Size(14, 20);
+            this.predictionErrorValue_label.Size = new System.Drawing.Size(10, 13);
             this.predictionErrorValue_label.TabIndex = 21;
             this.predictionErrorValue_label.Text = "-";
             // 
             // predictionError_label
             // 
             this.predictionError_label.AutoSize = true;
-            this.predictionError_label.Location = new System.Drawing.Point(15, 174);
+            this.predictionError_label.Location = new System.Drawing.Point(10, 113);
+            this.predictionError_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.predictionError_label.Name = "predictionError_label";
-            this.predictionError_label.Size = new System.Drawing.Size(120, 20);
+            this.predictionError_label.Size = new System.Drawing.Size(81, 13);
             this.predictionError_label.TabIndex = 17;
             this.predictionError_label.Text = "Prediction error:";
             // 
@@ -433,27 +457,30 @@ namespace IrisNaiveBayes
             // 
             this.trainingTimeValue_label.AutoSize = true;
             this.trainingTimeValue_label.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.trainingTimeValue_label.Location = new System.Drawing.Point(146, 57);
+            this.trainingTimeValue_label.Location = new System.Drawing.Point(97, 37);
+            this.trainingTimeValue_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.trainingTimeValue_label.Name = "trainingTimeValue_label";
-            this.trainingTimeValue_label.Size = new System.Drawing.Size(14, 20);
+            this.trainingTimeValue_label.Size = new System.Drawing.Size(10, 13);
             this.trainingTimeValue_label.TabIndex = 18;
             this.trainingTimeValue_label.Text = "-";
             // 
             // classifierErrorValue_label
             // 
             this.classifierErrorValue_label.AutoSize = true;
-            this.classifierErrorValue_label.Location = new System.Drawing.Point(146, 96);
+            this.classifierErrorValue_label.Location = new System.Drawing.Point(97, 62);
+            this.classifierErrorValue_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.classifierErrorValue_label.Name = "classifierErrorValue_label";
-            this.classifierErrorValue_label.Size = new System.Drawing.Size(14, 20);
+            this.classifierErrorValue_label.Size = new System.Drawing.Size(10, 13);
             this.classifierErrorValue_label.TabIndex = 20;
             this.classifierErrorValue_label.Text = "-";
             // 
             // testingTimeValue_label
             // 
             this.testingTimeValue_label.AutoSize = true;
-            this.testingTimeValue_label.Location = new System.Drawing.Point(146, 135);
+            this.testingTimeValue_label.Location = new System.Drawing.Point(97, 88);
+            this.testingTimeValue_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.testingTimeValue_label.Name = "testingTimeValue_label";
-            this.testingTimeValue_label.Size = new System.Drawing.Size(14, 20);
+            this.testingTimeValue_label.Size = new System.Drawing.Size(10, 13);
             this.testingTimeValue_label.TabIndex = 19;
             this.testingTimeValue_label.Text = "-";
             // 
@@ -471,10 +498,10 @@ namespace IrisNaiveBayes
             // reset_button
             // 
             this.reset_button.Enabled = false;
-            this.reset_button.Location = new System.Drawing.Point(1131, 711);
-            this.reset_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.reset_button.Location = new System.Drawing.Point(754, 462);
+            this.reset_button.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.reset_button.Name = "reset_button";
-            this.reset_button.Size = new System.Drawing.Size(266, 75);
+            this.reset_button.Size = new System.Drawing.Size(177, 49);
             this.reset_button.TabIndex = 27;
             this.reset_button.Text = "RESET";
             this.reset_button.UseVisualStyleBackColor = true;
@@ -482,15 +509,16 @@ namespace IrisNaiveBayes
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
-            this.ClientSize = new System.Drawing.Size(1409, 844);
+            this.ClientSize = new System.Drawing.Size(913, 487);
             this.Controls.Add(this.reset_button);
             this.Controls.Add(this.performance_groupBox);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.parameters_groupBox);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.groupBox1.ResumeLayout(false);
@@ -552,6 +580,10 @@ namespace IrisNaiveBayes
         private System.Windows.Forms.OpenFileDialog training_openFileDialog;
         private System.Windows.Forms.OpenFileDialog testing_openFileDialog;
         private System.Windows.Forms.Button reset_button;
+        //Thêm
+        private System.Windows.Forms.RichTextBox classificationLog_richTextBox;
+        private System.Windows.Forms.ComboBox attributeToPredict_comboBox;
+        private System.Windows.Forms.ComboBox classifierToUse_comboBox;
     }
 }
 
